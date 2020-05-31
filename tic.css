@@ -35,7 +35,7 @@ table tr td:last-child{
 }
 @media screen and (min-width:200px) {
 	button{
-	margin-left:100px;
+	margin-left:300px;
 	}
 }
 @media screen and (min-width:1200px) {
