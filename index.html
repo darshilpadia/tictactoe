@@ -3,10 +3,38 @@
 <link rel="stylesheet" href="tic.css">
 </head>
 <body bgcolor="gray">
-<h1 align="center">Tic tac toe</h1>
-<button onclick="newgame()">New Game</button>
-<h2 id="player" align="center">0's turn</h2>
-<table align="center">
+
+<div class="gmaehead">
+	<h1 align="center">Tic tac toe</h1>
+</div>
+
+<div>
+<div class="singlebutton"><button id="singleplayer" onclick="singleplay.msg()">Single player</button></div>
+<div class="multibutton"><button id="multiplayer" onclick="play.showtable()">Multiplayer</button></div>
+</div>
+
+<button id="newgame" onclick="play.newgame()">New Game</button>
+<h2 id="player" align="center"></h2>
+<table id="t1" align="center">
+<tr>
+<td id="r1" onclick="play.printtext(1)"></td>
+<td id="r2" onclick="play.printtext(2)"></td>
+<td id="r3" onclick="play.printtext(3)"></td>
+</tr>
+<tr>
+<td id="r4" onclick="play.printtext(4)"></td>
+<td id="r5" onclick="play.printtext(5)"></td>
+<td id="r6" onclick="play.printtext(6)"></td>
+</tr>
+<tr>
+<td id="r7" onclick="play.printtext(7)"></td>
+<td id="r8" onclick="play.printtext(8)"></td>
+<td id="r9" onclick="play.printtext(9)"></td>
+</tr>
+</table>
+<div id="endgame">
+</div>
+<table id="t2" align="center">
 <tr>
 <td id="r1" onclick="printtext(1)"></td>
 <td id="r2" onclick="printtext(2)"></td>

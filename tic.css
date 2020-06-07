@@ -1,3 +1,49 @@
+.singlebutton
+{
+	visibility:visible;
+	display:block;
+	clear:both;
+	float:left;
+	margin-left:400px;
+	/*border-radius:12px;
+	border:3px solid Red;*/
+	
+}
+.multibutton
+{
+	visibility:visible;
+	float:left;
+	margin-left:200px;
+}
+#endgame
+{
+	visibility:hidden;
+	width:300px;
+	flOat:left;
+	background-color:red;
+	color:black;
+	border-radius:5px;
+	margin-top:-300px;
+	margin-left:500px;
+	text-align:center;
+	font-size:50px;
+	padding-top:50px;
+	padding-bottom:50px;
+}
+#newgame
+{
+	visibility:hidden;
+}
+#t1
+{
+	visibility:hidden;
+	
+}
+#t2
+{
+	visibility:hidden;
+}
+
 td{
 	border:2px solid red;
 	height:120px;
@@ -33,13 +79,9 @@ table tr td:first-child{
 table tr td:last-child{
 	border-right:0;
 }
-@media screen and (min-width:200px) {
+@media screen and (max-width:1200px) {
 	button{
-	margin-left:300px;
+	margin-left:410px;
 	}
 }
-@media screen and (min-width:1200px) {
-	button{
-	margin-left:600px;
-	}
-}
+

@@ -1,53 +1,87 @@
-let sign="0";
-let turn=document.getElementById("player");
-let c=0;
-function printtext(index)
+const wincomb=[[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
+let hplayer;
+let c=0,f=0,t=0;
+class game{
+newgame()
+{
+	hplayer="0";
+	c=0;
+	f=0;
+	document.getElementById("endgame").style.visibility = "hidden";
+	document.getElementById("player").innerText=hplayer+"'s turn";
+
+	for(let i=1;i<=9;i++)
+	{
+		document.getElementById("r"+i).innerText=null;
+	}
+}
+showtable()
+{
+	document.getElementById("t1").style.visibility = "visible";
+	play.newgame()
+	
+}
+printtext(index)
 {
 	let boxid = document.getElementById("r"+index);
 	if(boxid.innerText==""){
-		boxid.innerText=sign;
-			winlogic(sign);
-			changesign();
-			turn.innerText=sign+"'s turn";
-			c++;
+		boxid.innerText=hplayer;
+		c++;
+		if(c>=5)
+		{
+			multiplay.winner(hplayer);
+			
+		}
+		play.changesign();
+		document.getElementById("player").innerText=hplayer+"'s turn";
 	}
 }
-function changesign()
+changesign()
 {
-	if(sign=="0")
-		sign="X";
+	if(hplayer=="0")
+		hplayer="X";
 	else
-		sign="0";
+		hplayer="0";
 }
-function getbox(index)
+getbox(index)
 {
 	return document.getElementById("r"+index).innerText;
 }
-function checkboxs(a,b,c,m)
-{
-	if(getbox(a)==m && getbox(b)==m && getbox(c)==m)
-		return true;
-	else
-		return false;
+
 }
-function winlogic(sign)
+
+class multiplayer extends game
 {
-	if(checkboxs(1,2,3,sign) || checkboxs(4,5,6,sign) || checkboxs(7,8,9,sign) || checkboxs(1,5,9,sign) || checkboxs(3,5,7,sign) || checkboxs(1,4,7,sign) || checkboxs(2,5,8,sign) || checkboxs(3,6,9,sign))
+	winner(hplayer)
 	{
-		confirm(sign+" is winner");
-		//turn.innerText=sign+" won the match";
-		newgame();
-	}
-	if(document.getElementById("r1").innerText!="" && document.getElementById("r2").innerText!="" && document.getElementById("r3").innerText!="" && document.getElementById("r4").innerText!="" && document.getElementById("r5").innerText!="" && document.getElementById("r6").innerText!="" && document.getElementById("r7").innerText!="" && document.getElementById("r8").innerText!="" && document.getElementById("r9").innerText!="")
-	{
-		alert("Match Draw");
-		newgame();
-	}
-}
-function newgame()
-{
-	for(let i=1;i<=9;i++)
-	{
-		document.getElementById("r"+i).innerText="";
+		for(let i=0;i<8;i++)
+		{
+			if(super.getbox(wincomb[i][0])==hplayer && super.getbox(wincomb[i][1])==hplayer && super.getbox(wincomb[i][2])==hplayer)
+			{
+				document.getElementById("t1").style.visibility = "hidden";
+				document.getElementById("endgame").style.visibility = "visible";
+				document.getElementById("endgame").innerText=hplayer+" win!";
+				break;	
+			}
+			else if(c==9)
+			{	
+				document.getElementById("t1").style.visibility = "hidden";
+				document.getElementById("endgame").style.visibility = "visible";
+				document.getElementById("endgame").innerText="Tie Game";
+			}
+				
+		}
 	}
 }
+class singleplayer extends game
+{
+	msg()
+	{
+		document.getElementById("endgame").style.visibility = "visible";
+		document.getElementById("endgame").innerText="work in progress,you can play Multiplayer";
+		
+	}
+}
+let play = new game();
+let multiplay = new multiplayer();
+let singleplay = new singleplayer();
