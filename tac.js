@@ -79,7 +79,8 @@ class singleplayer extends game
 	{
 		document.getElementById("endgame").style.visibility = "visible";
 		document.getElementById("endgame").innerText="work in progress,you can play Multiplayer";
-		document.getElementById("player").style.visibilty = "hidden";
+		document.getElementById("t1").style.visibility = "hidden";
+		document.getElementById("player").style.visibility = "hidden";
 		
 	}
 }
