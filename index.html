@@ -9,15 +9,15 @@
 </div>
 
 <div>
-<div class="singlebutton"><button id="singleplayer" onclick="singleplay.showtable()">Single player</button></div>
-<div class="multibutton"><button id="multiplayer" onclick="play.showtable()">Multiplayer</button></div>
+<div class="singlebutton"><button id="singleplayer" onclick="singleplay.showtable(this.id)">Single player-Easy</button></div>
+<div class="multibutton"><button id="multiplayer" onclick="play.showtable(this.id)">Multiplayer</button></div>
 </div>
 
 <button id="newgame" onclick="play.newgame()">New Game</button>
 <h2 id="player" align="center"></h2>
 <table id="t1" align="center">
 <tr>
-<td id="r1" onclick="play.printtext(1)">jh</td>
+<td id="r1" onclick="play.printtext(1)"></td>
 <td id="r2" onclick="play.printtext(2)"></td>
 <td id="r3" onclick="play.printtext(3)"></td>
 </tr>
@@ -34,19 +34,19 @@
 </table>
 <table id="t2" align="center">
 <tr>
-<td id="r11" onclick="singleplay.printtext(1)"></td>
-<td id="r12" onclick="singleplay.printtext(2)"></td>
-<td id="r13" onclick="singleplay.printtext(3)"></td>
+<td id="r11" onclick="singleplay.huturn(11)"></td>
+<td id="r12" onclick="singleplay.huturn(12)"></td>
+<td id="r13" onclick="singleplay.huturn(13)"></td>
 </tr>
 <tr>
-<td id="r14" onclick="singleplay.printtext(4)"></td>
-<td id="r15" onclick="singleplay.printtext(5)"></td>
-<td id="r16" onclick="singleplay.printtext(6)"></td>
+<td id="r14" onclick="singleplay.huturn(14)"></td>
+<td id="r15" onclick="singleplay.huturn(15)"></td>
+<td id="r16" onclick="singleplay.huturn(16)"></td>
 </tr>
 <tr>
-<td id="r17" onclick="singleplay.printtext(7)"></td>
-<td id="r18" onclick="singleplay.printtext(8)"></td>
-<td id="r19" onclick="singleplay.printtext(9)">kjkj</td>
+<td id="r17" onclick="singleplay.huturn(17)"></td>
+<td id="r18" onclick="singleplay.huturn(18)"></td>
+<td id="r19" onclick="singleplay.huturn(19)"></td>
 </tr>
 </table>
 <div id="endgame">
