@@ -2,19 +2,19 @@
 <head>
 <link rel="stylesheet" href="tic.css">
 </head>
-<body bgcolor="gray">
+<body>
 
 <div class="gmaehead">
 	<h1 align="center">Tic tac toe</h1>
 </div>
 
 <div>
-<div class="singlebutton"><button id="singleplayer" onclick="singleplay.showtable(this.id)">Single player-Easy</button></div>
-<div class="multibutton"><button id="multiplayer" onclick="play.showtable(this.id)">Multiplayer</button></div>
+<div class="singlebutton"><button id="singleplayer" onclick="singleplay.showtable()">Single player-Easy</button></div>
+<div class="smartbutton"><button id="smartplayer" onclick="smartplay.showtable()">Single player-Hard</button></div>
+<div class="multibutton"><button id="multiplayer" onclick="play.showtable()">Multiplayer</button></div>
 </div>
-
-<button id="newgame" onclick="play.newgame()">New Game</button>
-<h2 id="player" align="center"></h2>
+<div class="player" id="player">
+</div>
 <table id="t1" align="center">
 <tr>
 <td id="r1" onclick="play.printtext(1)"></td>
@@ -49,7 +49,26 @@
 <td id="r19" onclick="singleplay.huturn(19)"></td>
 </tr>
 </table>
-<div id="endgame">
+
+<table id="t3" align="center">
+<tr>
+<td id="r21" onclick="smartplay.huturn(21)"></td>
+<td id="r22" onclick="smartplay.huturn(22)"></td>
+<td id="r23" onclick="smartplay.huturn(23)"></td>
+</tr>
+<tr>
+<td id="r24" onclick="smartplay.huturn(24)"></td>
+<td id="r25" onclick="smartplay.huturn(25)"></td>
+<td id="r26" onclick="smartplay.huturn(26)"></td>
+</tr>
+<tr>
+<td id="r27" onclick="smartplay.huturn(27)"></td>
+<td id="r28" onclick="smartplay.huturn(28)"></td>
+<td id="r29" onclick="smartplay.huturn(29)"></td>
+</tr>
+</table>
+
+<div class="endgame" id="endgame">
 </div>
 <script src="tac.js"></script>
 </body>
