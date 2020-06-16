@@ -1,11 +1,23 @@
+
+.menuButtons div
+{
+	display: grid;
+	grid-template-columns: repeat(1,auto);
+	margin: 10px 500px;
+
+	
+	
+
+}
 button
 {
 	background-color:white;
 	color:Black;
 	font-size:24px;
 	border-radius:12px;
-	border:3px solid Blue;
+	border:3px solid green;
 	text-align:center;
+	
 	
 	
 }
@@ -17,27 +29,29 @@ div.player{
 }
 .singlebutton
 {
-float:left;	
-margin-right:150px;
+
+/*margin-right:150px;*/
 }
 .smartbutton
 {
-float:left;
-margin-right:150px;	
+float:center;
+
+/*margin-right:150px;	*/
 }
 .multibutton
 {
+	/*float: right;*/
 }
 .endgame
 {
 	visibility:hidden;
 	width:300px;
-	flOat:left;
-	background-color:red;
+	/*float:left;*/
+	background-color:green;
 	color:black;
 	border-radius:5px;
 	margin-top:0px;
-	margin-left:500px;
+	/*margin-left:500px;*/
 	text-align:center;
 	font-size:50px;
 	padding-top:50px;
@@ -62,6 +76,7 @@ table
 	position:absolute;
 	margin-left:500px;
 	visibility:hidden;
+	margin-bottom:10px; 
 }
 table tr:first-child td{
 	border-top:0;
@@ -77,7 +92,19 @@ table tr td:last-child{
 }
 @media screen and (max-width:1200px) {
 	button{
-	margin-left:410px;
+	/*margin-left:410px;*/
+	}
+	table
+	{
+		margin-left: 300px;
+		margin-top: 0px;
+	}
+	.menuButtons div
+	{
+		
+		margin: 10px 100px;
+
+		
 	}
 }
 

@@ -8,13 +8,18 @@
 	<h1 align="center">Tic tac toe</h1>
 </div>
 
-<div>
+<div class="menuButtons">
+	
 <div class="singlebutton"><button id="singleplayer" onclick="singleplay.showtable()">Single player-Easy</button></div>
+<div class="smartbutton"><button id="mediumplayer" onclick="mediumplay.showtable()">Single player-Medium</button></div>
 <div class="smartbutton"><button id="smartplayer" onclick="smartplay.showtable()">Single player-Hard</button></div>
 <div class="multibutton"><button id="multiplayer" onclick="play.showtable()">Multiplayer</button></div>
 </div>
+
+<br>
 <div class="player" id="player">
 </div>
+
 <table id="t1" align="center">
 <tr>
 <td id="r1" onclick="play.printtext(1)"></td>
@@ -52,24 +57,43 @@
 
 <table id="t3" align="center">
 <tr>
-<td id="r21" onclick="smartplay.huturn(21)"></td>
-<td id="r22" onclick="smartplay.huturn(22)"></td>
-<td id="r23" onclick="smartplay.huturn(23)"></td>
+<td id="r21" onclick="mediumplay.huturn(21)"></td>
+<td id="r22" onclick="mediumplay.huturn(22)"></td>
+<td id="r23" onclick="mediumplay.huturn(23)"></td>
 </tr>
 <tr>
-<td id="r24" onclick="smartplay.huturn(24)"></td>
-<td id="r25" onclick="smartplay.huturn(25)"></td>
-<td id="r26" onclick="smartplay.huturn(26)"></td>
+<td id="r24" onclick="mediumplay.huturn(24)"></td>
+<td id="r25" onclick="mediumplay.huturn(25)"></td>
+<td id="r26" onclick="mediumplay.huturn(26)"></td>
 </tr>
 <tr>
-<td id="r27" onclick="smartplay.huturn(27)"></td>
-<td id="r28" onclick="smartplay.huturn(28)"></td>
-<td id="r29" onclick="smartplay.huturn(29)"></td>
+<td id="r27" onclick="mediumplay.huturn(27)"></td>
+<td id="r28" onclick="mediumplay.huturn(28)"></td>
+<td id="r29" onclick="mediumplay.huturn(29)"></td>
+</tr>
+</table>
+<table id="t4" align="center">
+<tr>
+<td id="r31" onclick="smartplay.huturn(31)"></td>
+<td id="r32" onclick="smartplay.huturn(32)"></td>
+<td id="r33" onclick="smartplay.huturn(33)"></td>
+</tr>
+<tr>
+<td id="r34" onclick="smartplay.huturn(34)"></td>
+<td id="r35" onclick="smartplay.huturn(35)"></td>
+<td id="r36" onclick="smartplay.huturn(36)"></td>
+</tr>
+<tr>
+<td id="r37" onclick="smartplay.huturn(37)"></td>
+<td id="r38" onclick="smartplay.huturn(38)"></td>
+<td id="r39" onclick="smartplay.huturn(39)"></td>
 </tr>
 </table>
 
+<center>
 <div class="endgame" id="endgame">
 </div>
+</center>
 <script src="tac.js"></script>
 </body>
 </html>

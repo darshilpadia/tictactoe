@@ -183,7 +183,7 @@ winner(player)
 
 }
 /////////////////////////////////////////////////////////////////////////////
-class smartplayer
+class mediumplayer
 {
 newgame()
 {
@@ -199,12 +199,177 @@ newgame()
 			document.getElementById("r2"+i).innerText=null;
 		
 	}
-	//smartplay.bestmove();
 }
 showtable()
 {
 	document.getElementById("t1").style.visibility = "hidden";
 	document.getElementById("t3").style.visibility = "visible";
+	document.getElementById("t2").style.visibility = "hidden";
+	mediumplay.newgame();	
+}
+huturn(index)
+{
+	let boxid = document.getElementById("r"+index);
+	if(boxid.innerText=="")
+	{
+		boxid.innerText=hplayer;
+		c++;
+		if(c>=5)
+		{
+			mediumplay.winner(hplayer);
+		}
+		if(temp==0)
+			mediumplay.bestmove();
+	}
+	
+	
+}
+getboard()
+{
+	let board = [];
+	for(let k=21;k<30;k++)
+	{
+		board.push(document.getElementById("r"+k).innerText);
+		
+	}
+	return board;
+}
+getbox(index)
+{
+	return document.getElementById("r2"+index).innerText;
+}
+equal(a,b,c)
+{
+	return mediumplay.getbox(a) == mediumplay.getbox(b) && mediumplay.getbox(b) == mediumplay.getbox(c) && mediumplay.getbox(a)!="";
+}
+checkwinner()
+{
+	let win = null;
+	for(let i=0;i<8;i++)
+	{
+		if(mediumplay.equal(wincomb[i][0],wincomb[i][1],wincomb[i][2]))
+			win=mediumplay.getbox(wincomb[i][0]);
+	}
+	let op=0;
+	for(let i=1;i<10;i++)
+	{
+		if(mediumplay.getbox(i) == "")
+			op++;
+	}
+	
+	if(win == null && op==0)
+	{
+		return "tie";					
+	}
+	else
+		return win;
+}
+bestmove()
+{
+	let board = mediumplay.getboard();
+	let move = mediumplay.minimax(board,false);
+	document.getElementById("r"+move).innerHTML = aiplayer;
+	c++;
+	if(c>=5)
+		mediumplay.winner(aiplayer);
+	
+}
+minimax(board,ismax)
+{
+	let result = mediumplay.checkwinner();
+	if(result !== null)
+	{
+		return scores[result];
+	}	
+	if(ismax)
+	{
+		let bestScore = -1000; 
+		let move;
+		for(let k=21;k<30;k++)
+		{
+			if(document.getElementById("r"+k).innerText == "")
+			{
+				document.getElementById("r"+k).innerText = aiplayer;
+				mediumplay.getboard();
+				let score = mediumplay.minimax(board,false);
+				document.getElementById("r"+k).innerText = "";
+				if(score > bestScore)
+				{
+					bestScore = score;
+					move = k;
+				}
+			}
+		}
+		return move;
+	}else
+	{
+		let bestScore = 1000; 
+		let move;
+		for(let k=21;k<30;k++)
+		{
+			if(document.getElementById("r"+k).innerText == "")
+			{
+				document.getElementById("r"+k).innerText = hplayer;
+				mediumplay.getboard();
+				let score = mediumplay.minimax(board,true);
+				document.getElementById("r"+k).innerText = "";
+				if(score < bestScore)
+				{
+					bestScore = score;
+					move = k;
+				}
+			}
+		}
+		return move;
+		
+	}
+}
+winner(player)
+	{
+		for(let i=0;i<8;i++)
+		{
+			if(mediumplay.getbox(wincomb[i][0])==player && mediumplay.getbox(wincomb[i][1])==player && mediumplay.getbox(wincomb[i][2])==player)
+			{
+				document.getElementById("t3").style.visibility = "hidden";
+				document.getElementById("endgame").style.visibility = "visible";
+				document.getElementById("endgame").innerText=player+" win!";
+				temp=1;
+				break;
+			}
+			
+		}
+		if(temp==0 && c==9)
+		{
+					document.getElementById("t3").style.visibility = "hidden";
+					document.getElementById("endgame").style.visibility = "visible";
+					document.getElementById("endgame").innerText="Tie Game";
+					
+		}
+	}
+}
+//////////////////////////////////////////////////////////////////////////////
+class smartplayer
+{
+newgame()
+{
+	hplayer="0";
+	c=0;
+	f=0;
+	temp=0;
+	document.getElementById("endgame").style.visibility = "hidden";
+	document.getElementById("player").innerText=hplayer+"'s turn";
+
+	for(let i=1;i<=9;i++)
+	{
+			document.getElementById("r3"+i).innerText=null;
+		
+	}
+}
+showtable()
+{
+	document.getElementById("t1").style.visibility = "hidden";
+	document.getElementById("t3").style.visibility = "hidden";
+	document.getElementById("t4").style.visibility = "visible";
 	document.getElementById("t2").style.visibility = "hidden";
 	smartplay.newgame();	
 }
@@ -228,7 +393,7 @@ huturn(index)
 getboard()
 {
 	let board = [];
-	for(let k=21;k<30;k++)
+	for(let k=31;k<40;k++)
 	{
 		board.push(document.getElementById("r"+k).innerText);
 		
@@ -237,7 +402,7 @@ getboard()
 }
 getbox(index)
 {
-	return document.getElementById("r2"+index).innerText;
+	return document.getElementById("r3"+index).innerText;
 }
 equal(a,b,c)
 {
@@ -267,15 +432,14 @@ checkwinner()
 }
 bestmove()
 {
-	let bestScore = -Infinity;
+	let bestScore = -1000;
 	let move;
-	for(let k=21;k<30;k++)
+	for(let k=31;k<40;k++)
 	{
 		if(document.getElementById("r"+k).innerText == "")
 		{
 				document.getElementById("r"+k).innerText = aiplayer;
 				let board = smartplay.getboard();
-				console.log(board);
 				let score = smartplay.minimax(board,0,false);
 				document.getElementById("r"+k).innerText = "";
 				if(score > bestScore)
@@ -302,8 +466,8 @@ minimax(board,deapth,ismax)
 	}	
 	if(ismax)
 	{
-		let bestScore = -Infinity; 
-		for(let k=21;k<30;k++)
+		let bestScore = -1000; 
+		for(let k=31;k<40;k++)
 		{
 			if(document.getElementById("r"+k).innerText == "")
 			{
@@ -320,8 +484,8 @@ minimax(board,deapth,ismax)
 		return bestScore;
 	}else
 	{
-		let bestScore = Infinity; 
-		for(let k=21;k<30;k++)
+		let bestScore = 1000; 
+		for(let k=31;k<40;k++)
 		{
 			if(document.getElementById("r"+k).innerText == "")
 			{
@@ -346,7 +510,7 @@ winner(player)
 		{
 			if(smartplay.getbox(wincomb[i][0])==player && smartplay.getbox(wincomb[i][1])==player && smartplay.getbox(wincomb[i][2])==player)
 			{
-				document.getElementById("t3").style.visibility = "hidden";
+				document.getElementById("t4").style.visibility = "hidden";
 				document.getElementById("endgame").style.visibility = "visible";
 				document.getElementById("endgame").innerText=player+" win!";
 				temp=1;
@@ -356,24 +520,14 @@ winner(player)
 		}
 		if(temp==0 && c==9)
 		{
-					document.getElementById("t3").style.visibility = "hidden";
+					document.getElementById("t4").style.visibility = "hidden";
 					document.getElementById("endgame").style.visibility = "visible";
 					document.getElementById("endgame").innerText="Tie Game";
 					
 		}
 	}
-
-	
-
-
 }
-
-
-
-
-
-
-
 let play = new game();
 let singleplay = new singleplayer();
+let mediumplay = new mediumplayer();
 let smartplay = new smartplayer();
